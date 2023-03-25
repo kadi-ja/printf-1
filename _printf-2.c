@@ -30,3 +30,8 @@ int _printf(const char *format, ...)
 					format++;
 				}
 				else if (*format == "s")
+				{
+					len2= s_handler(va_arg(ap, char *));
+					len += len2;
+					format++;
+				}

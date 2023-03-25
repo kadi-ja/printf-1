@@ -1,39 +1,56 @@
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * _printf - function like printf
- * @format: string whit format to print
- * Return: number of chars that print
+ * _printf-2 - The function that produces the output based on the format specifier
+ * @format - this is the format specifier
+ * return: length of the print string
  */
 
-int _printf(const char *format, ...)
+int _printf-test(const char *format, ...)
 {
-	int char_printed = 0;
-	va_list args;
-	int (*sp_func)(va_list);
+	int len2, len;
+	va_list ap;
 
-	va_start(args, format);
-	if (!format)
-		return (-1);
-	while (*format)
+	va_start(ap, format);
+	while (*format != "\0")
 	{
-		if (*format == '%')
+		if (*format == "\0")
 		{
 			format++;
-			sp_func = get_sp_func(format);
-			if (!sp_func)
+			if (*format == "%")
 			{
-				char_printed += _putchar('%');
-				if (*format)
-					char_printed += _putchar(*format);
+				format++;
+				if (*format == "c")
+				{
+					len2 = c_handler(va_arg(ap, int));
+					len += len2;
+					format++;
+				}
+				else if (*format == "s")
+				{
+					len2= s_handler(va_arg(ap, char *));
+					len += len2;
+					format++;
+				}
+				else if (*format == "%")
+				{
+					len2 = percentage_handler(va_arg(ap, int));
+					len += len2;
+					format++;
+				}
 			}
 			else
-				char_printed += sp_func(args);
+			{
+				_putchar(*format);
+				format++;
+				len++;
+			}
 		}
-		else
-				char_printed += _putchar(*format);
-		format++;
+		va_end(ap);
+		return (len);
 	}
-	va_end(args);
-	return (char_printed);
-}
+
+	

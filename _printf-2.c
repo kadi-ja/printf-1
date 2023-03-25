@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		if (*format == "\0")
 		{
 			format++;
-			if (*format == "c")
+			if (*format == "%")
 			{
 				format++;
 				if (*format == "c")
@@ -35,3 +35,22 @@ int _printf(const char *format, ...)
 					len += len2;
 					format++;
 				}
+				else if (*format == "%")
+				{
+					len2 = percentage_handler(va_arg(ap, int));
+					len += len2;
+					format++;
+				}
+			}
+			else
+			{
+				_putchar(*format);
+				format++;
+				len++;
+			}
+		}
+		va_end(ap);
+		return (len);
+	}
+
+

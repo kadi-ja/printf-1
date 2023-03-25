@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include "main.h>
+#include "main.h"
 
 /**
  * _printf-2 - The function that produces the output based on the format specifier

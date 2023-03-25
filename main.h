@@ -23,6 +23,6 @@ int print_str(va_list);
 int (*get_sp_func(const char *format))(va_list);
 int _printf(const char *format, ...);
 int _putchar(char c);
-int 
+int _printf-test(const char *format, ...)
 
 #endif

@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * struct sp - Struct print_t
@@ -21,5 +22,6 @@ int print_percent(va_list);
 int print_str(va_list);
 int (*get_sp_func(const char *format))(va_list);
 int _printf(const char *format, ...);
+int _putchar(char c);
 
 #endif

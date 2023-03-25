@@ -10,7 +10,7 @@ int print_chr(va_list args)
 {
 	char c = va_arg(args, int);
 
-	write(1, &c, 1);
+	_putchar(c);
 	return (1);
 }
 
@@ -30,7 +30,7 @@ int print_str(va_list args)
 
 	while (*s)
 	{
-		write(1, s, 1);
+		_putchar(*s);
 		s++;
 		count++;
 	}
@@ -46,6 +46,6 @@ int print_str(va_list args)
 int print_percent(va_list args)
 {
 	(void) args;
-	write(1, "%",  1);
-	return (1);
+	_putchar('%');
+	return (-1);
 }

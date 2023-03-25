@@ -13,10 +13,8 @@ int _printf(const char *format, ...)
 	int (*sp_func)(va_list);
 
 	va_start(args, format);
-
 	if (!format)
 		return (-1);
-
 	while (*format)
 	{
 		if (*format == '%')
@@ -25,15 +23,15 @@ int _printf(const char *format, ...)
 			sp_func = get_sp_func(format);
 			if (!sp_func)
 			{
-				char_printed += write(1, "%", 1);
+				char_printed += _putchar('%');
 				if (*format)
-					char_printed += write(1, format, 1);
+					char_printed += _putchar(*format);
 			}
 			else
 				char_printed += sp_func(args);
 		}
 		else
-			char_printed += write(1, format, 1);
+				char_printed += _putchar(*format);
 		format++;
 	}
 	va_end(args);

@@ -9,7 +9,7 @@
  * return: length of the print string
  */
 
-int _printf(const char *format, ...)
+int _printf-test(const char *format, ...)
 {
 	int len2, len;
 	va_list ap;

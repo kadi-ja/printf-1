@@ -8,14 +8,10 @@
 
 int print_chr(va_list args)
 {
-	if (args)
-	{
-		char c = va_arg(args, int);
+	char c = va_arg(args, int);
 
-		write(1, &c, 1);
-		return (1);
-	}
-	return (0);
+	_putchar(c);
+	return (1);
 }
 
 
@@ -26,23 +22,19 @@ int print_chr(va_list args)
  */
 int print_str(va_list args)
 {
-	if (args)
+	int count = 0;
+	char *s = va_arg(args, char *);
+
+	if (!s)
+		s = "(null)";
+
+	while (*s)
 	{
-		int count = 0;
-		char *s = va_arg(args, char *);
-
-		if (!s)
-			s = "(null)";
-
-		while (*s)
-		{
-			write(1, s, 1);
-			s++;
-			count++;
-		}
-		return (count);
+		_putchar(*s);
+		s++;
+		count++;
 	}
-	return (0);
+	return (count);
 
 }
 
@@ -53,11 +45,7 @@ int print_str(va_list args)
  */
 int print_percent(va_list args)
 {
-	if (args)
-	{
-		(void) args;
-		write(1, "%",  1);
-		return (1);
-	}
-	return (0);
+	(void) args;
+	_putchar('%');
+	return (-1);
 }

@@ -30,6 +30,6 @@ int print_uns_int(va_list args);
 int print_octal(va_list args);
 int print_uns_hex(va_list args);
 int print_uns_HEX(va_list args);
-int buffring(char c);
+
 
 #endif

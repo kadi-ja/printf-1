@@ -9,39 +9,37 @@
 
 int print_uns_hex(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int), tmp;
-	int i = 0, j, digit, num_count = 0;
-	char *buffer;
+	unsigned int x = va_arg(args, int);
+	int res, i, j, count = 0;
+	char *ptr;
+	unsigned int  y = x;
 
-	tmp = num;
-	while (tmp > 0)
+	if (x < 1)
 	{
-		tmp /= 16;
-		num_count++;
+		_write('0' + 0);
+		return (1);
 	}
-
-	buffer = malloc(sizeof(char) * (num_count + 1));
-
-	if (buffer == NULL)
+	for (j = 0; y > 0; j++)
+		y = y / 16;
+	ptr = malloc(sizeof(char) * j);
+	if (ptr == NULL)
 		return (-1);
-
-	while (num > 0)
+	for (i = 0; x > 0; i++)
 	{
-		digit = num % 16;
-		buffer[i++] = (digit < 10) ? ('0' + digit) : ('a' + digit - 10);
-		num /= 16;
+		res = x % 16;
+		x = x / 16;
+		if (res > 9 && res < 16)
+			ptr[i] = 39 + res;
+		else
+			ptr[i] = res;
+		count++;
 	}
-
-	if (i == 0)
-		buffer[i++] = '0';
-
-	buffer[i] = '\0';
-
-	for (j = i - 1; j >= 0; j--)
-		_write(buffer[j]);
-
-	free(buffer);
-	return (i);
+	for (; i > 0; i--)
+	{
+		_write('0' + ptr[i - 1]);
+	}
+	free(ptr);
+	return (count);
 }
 
 
@@ -54,40 +52,35 @@ int print_uns_hex(va_list args)
 
 int print_uns_HEX(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int), temp;
-	char *buffer;
-	int len = 0, i, digit;
+	unsigned int x = va_arg(args, int);
+	int res, i, j, count = 0;
+	char *ptr;
+	unsigned int  y = x;
 
-	if (num == 0)
+	if (x < 1)
 	{
-		_write('0');
+		_write('0' + 0);
 		return (1);
 	}
-
-
-	temp = num;
-	while (temp > 0)
-	{
-		len++;
-		temp /= 16;
-	}
-
-	buffer = malloc(len + 1);
-	if (buffer == NULL)
+	for (j = 0; y > 0; j++)
+		y = y / 16;
+	ptr = malloc(sizeof(char) * j);
+	if (ptr == NULL)
 		return (-1);
-	i = len - 1;
-	while (num > 0)
+	for (i = 0; x > 0; i++)
 	{
-		digit = num % 16;
-		buffer[i] = (digit < 10) ? ('0' + digit) : ('A' + digit - 10);
-		num /= 16;
-		i--;
+		res = x % 16;
+		x = x / 16;
+		if (res > 9 && res < 16)
+			ptr[i] = 7 + res;
+		else
+			ptr[i] = res;
+		count++;
 	}
-
-	buffer[len] = '\0';
-	for (i = 0; buffer[i] != '\0'; i++)
-		_write(buffer[i]);
-
-	free(buffer);
-	return (len);
+	for (; i > 0; i--)
+	{
+		_write('0' + ptr[i - 1]);
+	}
+	free(ptr);
+	return (count);
 }

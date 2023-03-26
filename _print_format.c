@@ -60,6 +60,10 @@ int _print_spec(char format, va_list args)
 	spc_dt _types[] = {
 		{"c", _print_a_char},
 		{"s", _print_a_string},
+		{"u", print_uns_int},
+		{"o", print_octal},
+		{"x", print_uns_hex},
+		{"X", print_uns_HEX},
 		{NULL, NULL}
 	};
 
@@ -107,7 +111,7 @@ int _print_invalid_spec(char prev_format, char format, int count)
   */
 int _validate_char(char _type)
 {
-	char _types[] = {'c', 's', 'd', 'i', 'b', '%'};
+	char _types[] = {'c', 's', 'd', 'i', 'b', '%', 'u', 'x', 'o', 'X'};
 	int i = 0;
 
 	while (_types[i])

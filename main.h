@@ -25,5 +25,9 @@ int _print_format(const char *format, va_list args);
 int _print_spec(char format, va_list args);
 int _print_invalid_spec(char prev_format, char format, int count);
 int _validate_char(char _type);
+int print_uns_int(va_list args);
+int print_octal(va_list args);
+int print_uns_hex(va_list args);
+int print_uns_HEX(va_list args);
 
 #endif

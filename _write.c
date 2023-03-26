@@ -9,21 +9,7 @@
  */
 int _write(char c)
 {
-	return (buffring(c));
+	return write(1, &c, 1);
 }
 
-int buffring(char c)
-{
-	char buffer[BUFFER_SIZE];
-	int buf_idx = 0;
 
-	buffer[buf_idx++] = c;
-
-	if (buf_idx == BUFFER_SIZE)
-	{
-		write(1, buffer, BUFFER_SIZE);
-		buf_idx = 0;
-	}
-
-	return (1);
-}

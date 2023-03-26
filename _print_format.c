@@ -65,6 +65,7 @@ int _print_spec(char format, va_list args)
 		{"x", print_uns_hex},
 		{"X", print_uns_HEX},
 		{"S", print_S},
+		{"p", print_p},
 		{NULL, NULL}
 	};
 
@@ -112,7 +113,7 @@ int _print_invalid_spec(char prev_format, char format, int count)
   */
 int _validate_char(char _type)
 {
-	char _types[] = {'c', 's', 'd', 'i', 'b', '%', 'u', 'x', 'o', 'X', 'S'};
+	char _types[] = {'c', 's', 'd', 'i', 'b', '%', 'u', 'x', 'o', 'X', 'S', 'p'};
 	int i = 0;
 
 	while (_types[i])

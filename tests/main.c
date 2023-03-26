@@ -9,10 +9,10 @@
  */
 int main(void)
 {
-     unsigned int ui;
-  
+    unsigned int ui;
+    void *addr;
 
-   
+    addr = (void *)0x7ffe637541f0;
     ui = (unsigned int)INT_MAX + 1024;
    _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
@@ -24,6 +24,8 @@ int main(void)
     printf("Unsigned octal:[%o]\n", ui);
     _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+       _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
      _printf("%S\n", "Best\nSchool");
 
     printf("%d, %d\n",  _printf("Character:[%c]\n", 'H'), printf("Character:[%c]\n", 'H'));

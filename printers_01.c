@@ -8,8 +8,14 @@
 
 int print_chr(va_list args)
 {
-	_putchar(va_arg(args, int));
-	return (1);
+	if (args)
+	{
+		char c = va_arg(args, int);
+
+		write(1, &c, 1);
+		return (1);
+	}
+	return (0);
 }
 
 
@@ -30,7 +36,7 @@ int print_str(va_list args)
 
 		while (*s)
 		{
-			_putchar(*s);
+			write(1, s, 1);
 			s++;
 			count++;
 		}
@@ -40,3 +46,18 @@ int print_str(va_list args)
 
 }
 
+/**
+ * print_percent - Prints a percent sign to stdout
+ * @args: list arguments
+ * Return: The number of characters printed
+ */
+int print_percent(va_list args)
+{
+	if (args)
+	{
+		(void) args;
+		write(1, "%",  1);
+		return (1);
+	}
+	return (0);
+}

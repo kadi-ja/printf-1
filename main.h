@@ -18,10 +18,9 @@ typedef struct sp
 } print_t;
 
 int print_chr(va_list);
+int print_percent(va_list);
 int print_str(va_list);
 int (*get_sp_func(const char *format))(va_list);
 int _printf(const char *format, ...);
-int print_format(const char *format, va_list args);
-int _putchar(char c);
 
 #endif

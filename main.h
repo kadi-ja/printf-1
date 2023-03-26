@@ -7,20 +7,23 @@
 #include <stdlib.h>
 
 /**
- * struct sp - Struct print_t
- * @sp: The specifier
- * @f: The function associated
- */
-typedef struct sp
+  * struct specifiers - Struct specifiers
+  * @specifier: The conversion specifier
+  * @f: The function pointer
+  */
+typedef struct specifiers
 {
-	char *sp;
-	int (*f)(va_list);
-} print_t;
+	char *specifier;
+	int (*f)(va_list args);
+} spc_dt;
 
-int print_chr(va_list);
-int print_percent(va_list);
-int print_str(va_list);
-int (*get_sp_func(const char *format))(va_list);
+int _write(char c);
 int _printf(const char *format, ...);
+int _print_a_char(va_list args);
+int _print_a_string(va_list args);
+int _print_format(const char *format, va_list args);
+int _print_spec(char format, va_list args);
+int _print_invalid_spec(char prev_format, char format, int count);
+int _validate_char(char _type);
 
 #endif

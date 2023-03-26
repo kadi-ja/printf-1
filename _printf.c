@@ -1,56 +1,20 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
 #include "main.h"
-
 /**
- * _printf-2 - The function that produces the output based on the format specifier
- * @format - this is the format specifier
- * return: length of the print string
+ * _printf - function my printf
+ * @format: string whit format to print
+ *
+ * Return: number of chars that print
  */
-
-int _printf-test(const char *format, ...)
+int _printf(const char *format, ...)
 {
-	int len2, len;
-	va_list ap;
+	va_list args;
+	int length = 0;
 
-	va_start(ap, format);
-	while (*format != "\0")
-	{
-		if (*format == "\0")
-		{
-			format++;
-			if (*format == "%")
-			{
-				format++;
-				if (*format == "c")
-				{
-					len2 = c_handler(va_arg(ap, int));
-					len += len2;
-					format++;
-				}
-				else if (*format == "s")
-				{
-					len2= s_handler(va_arg(ap, char *));
-					len += len2;
-					format++;
-				}
-				else if (*format == "%")
-				{
-					len2 = percentage_handler(va_arg(ap, int));
-					len += len2;
-					format++;
-				}
-			}
-			else
-			{
-				_putchar(*format);
-				format++;
-				len++;
-			}
-		}
-		va_end(ap);
-		return (len);
-	}
+	if (format == NULL)
+		return (-1);
 
-	
+	va_start(args, format);
+	length = _print_format(format, args);
+	va_end(args);
+	return (length);
+}

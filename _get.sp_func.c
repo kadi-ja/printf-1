@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+* get_sp_func- get the correct function
+* @format: format specifier
+* Return: pointer to the correct function
+**/
+
 int (*get_sp_func(char format))(va_list)
 {
 	int i;
@@ -14,7 +20,6 @@ int (*get_sp_func(char format))(va_list)
 		{'p', print_p},
 		{'\0', NULL}
 	};
-	
 
 	for (i = 0; sp[i]._type; i++)
 	{

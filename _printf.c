@@ -10,32 +10,13 @@ int _printf(const char *format, ...)
 {
 	int char_printed = 0;
 	va_list args;
-	int (*sp_func)(va_list);
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(args, format);
 
-	if (!format)
-		return (-1);
-
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			sp_func = get_sp_func(format);
-			if (!sp_func)
-			{
-				char_printed += write(1, "%", 1);
-				if (*format)
-					char_printed += write(1, format, 1);
-			}
-			else
-				char_printed += sp_func(args);
-		}
-		else
-			char_printed += write(1, format, 1);
-		format++;
-	}
+	char_printed = print_format(format, args);
 
 	va_end(args);
 	return (char_printed);

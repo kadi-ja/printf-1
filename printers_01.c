@@ -2,62 +2,55 @@
 
 /**
  * print_chr - Prints a character to stdout
+ * @buf: array buffer of max size 1024
+ * @pos: the current position of the buffer
  * @args: A va_list containing the character to print
  * Return: The number of characters printed
  */
 
-int print_chr(va_list args)
+int print_chr(va_list args, char *buf, size_t *pos)
 {
-	if (args)
-	{
-		char c = va_arg(args, int);
+	char c = va_arg(args, int);
 
-		write(1, &c, 1);
-		return (1);
-	}
-	return (0);
+	write_char_to_buf(c, buf, pos);
+	return (1);
 }
-
 
 /**
  * print_str - Prints a string to stdout
+ * @buf: array buffer of max size 1024
+ * @pos: the current position of the buffer
  * @args: A va_list containing the string to print
  * Return: The number of characters printed
  */
-int print_str(va_list args)
+int print_str(va_list args,  char *buf, size_t *pos)
 {
-	if (args)
+	int count = 0;
+	char *s = va_arg(args, char *);
+
+	if (!s)
+		s = "(null)";
+
+	while (*s)
 	{
-		int count = 0;
-		char *s = va_arg(args, char *);
-
-		if (!s)
-			s = "(null)";
-
-		while (*s)
-		{
-			write(1, s, 1);
-			s++;
-			count++;
-		}
-		return (count);
+		write_char_to_buf(*s, buf, pos);
+		s++;
+		count++;
 	}
-	return (0);
 
+	return (count);
 }
 
 /**
  * print_percent - Prints a percent sign to stdout
- * @args: list arguments
+ * @buf: array buffer of max size 1024
+ * @pos: the current position of the buffer
+ * @args: A va_list containing the string to print
  * Return: The number of characters printed
  */
-int print_percent(va_list args)
+int print_percent(va_list args, char *buf, size_t *pos)
 {
-	if (args)
-	{
-		(void) args;
-		write(1, "%",  1);
-		return (1);
-	}
-	return (0);
+	(void)args;
+	write_char_to_buf('%', buf, pos);
+	return (1);
 }

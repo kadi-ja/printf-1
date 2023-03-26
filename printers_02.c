@@ -8,37 +8,35 @@
 
 int print_uns_int(va_list args)
 {
-	unsigned int n = va_arg(args, unsigned int);
-	int i, num_digits = 0;
-	unsigned int tmp;
-	char *buffer;
+	unsigned int n = va_arg(args, int), i = 1, divi = 1, j;
+	unsigned int m = n;
+	unsigned int tmp = n;
 
-	tmp = n;
-	while (tmp != 0)
+	if (n < 1)
 	{
-		tmp = tmp / 10;
-		num_digits++;
+		_write('0' + 0);
+		return (1);
 	}
-
-	buffer =  malloc(num_digits + 1);
-	if (buffer == NULL)
-		return (-1);
-
-	i = num_digits - 1;
-	do {
-		buffer[i] = '0' + (n % 10);
-		n /= 10;
-		i--;
-	} while (n > 0);
-
-	buffer[num_digits] = '\0';
-
-	for (i = 0; i < num_digits; i++)
-		_write(buffer[i]);
-
-	free(buffer);
-
-	return (num_digits);
+	if (n >= 1 && n <= 9)
+		_write('0' + n);
+	else
+	{
+		while (m >= 10)
+		{
+			m = m / 10;
+			i++;
+		}
+		for (j = i; j > 1; j--)
+			divi = divi * 10;
+		for (j = 1; j <= i; j++)
+		{
+			m = tmp / divi;
+			tmp = tmp - (m * divi);
+			divi = divi / 10;
+			_write('0' + m);
+		}
+	}
+	return (i);
 }
 
 /**
@@ -49,36 +47,34 @@ int print_uns_int(va_list args)
  */
 int print_octal(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int);
-	char *str;
-	int len = 0, digit_count = 1;
-	unsigned int tmp = num;
+	unsigned int x = va_arg(args, int);
+	int res, i, j, count = 0;
+	char *ptr;
+	unsigned int  y = x;
 
-
-	while (tmp /= 8)
-		digit_count++;
-
-	str = malloc(sizeof(char) * (digit_count + 1));
-
-	if (str == NULL)
-		return (-1);
-
-	do {
-		str[len++] = (num % 8) + '0';
-		num /= 8;
-	} while (num > 0);
-
-	while (len > 0)
+	if (x < 1)
 	{
-		len--;
-		if (_write(str[len]) != 1)
-		{
-			free(str);
-			return (-1);
-		}
+		_write('0' + 0);
+		return (1);
 	}
-	free(str);
-	return (len);
+	for (j = 0; y > 0; j++)
+		y = y / 8;
+	ptr = malloc(sizeof(char) * j);
+	if (ptr == NULL)
+		return (-1);
+	for (i = 0; x > 0; i++)
+	{
+		res = x % 8;
+		x = x / 8;
+		ptr[i] = res;
+		count++;
+	}
+	for (; i > 0; i--)
+	{
+		_write('0' + ptr[i - 1]);
+	}
+	free(ptr);
+	return (count);
 }
 
 

@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#define BUFFER_SIZE 1024
 /**
   * struct specifiers - Struct specifiers
   * @specifier: The conversion specifier
@@ -29,5 +30,6 @@ int print_uns_int(va_list args);
 int print_octal(va_list args);
 int print_uns_hex(va_list args);
 int print_uns_HEX(va_list args);
+int buffring(char c);
 
 #endif

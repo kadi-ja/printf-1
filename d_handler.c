@@ -13,7 +13,7 @@ int d_handler(va_list list)
 
 	if (list)
 	{
-		l = _putchar(va_arg(list, int));
+		l = _write(va_arg(list, int));
 		return (l);
 	}
 	return (0);

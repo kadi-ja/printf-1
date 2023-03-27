@@ -20,7 +20,6 @@ int (*get_sp_func(char format))(va_list)
 		{'p', print_p},
 		{'i', print_int_val},
 		{'d', print_dec},
-		{'b', print_binary},
 		{'\0', NULL}
 	};
 

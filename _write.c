@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * _write - writes the character c to stdout
@@ -11,3 +11,5 @@ int _write(char c)
 {
 	return (write(1, &c, 1));
 }
+
+

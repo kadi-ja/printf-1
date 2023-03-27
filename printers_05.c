@@ -1,10 +1,10 @@
 #include "main.h"
-/**
-*d_handler - A function to print a char
-*@list: variadic argument list string to print
-*Return: length of the printed string
-*/
 
+/**
+ * d_handler - A function to print a decimal number.
+ * @list: A va_list of arguments.
+ * Return: The number of printed characters.
+ */
 int d_handler(va_list list)
 {
 	int l;
@@ -19,11 +19,10 @@ int d_handler(va_list list)
 
 
 /**
-*i_handler - A function to print a unsigned integer
-*@list: variadic argument list string to print
-*Return: length of the printed string
-*/
-
+ * i_handler - A function to print an integer.
+ * @list: A va_list of arguments.
+ * Return: The number of printed characters.
+ */
 int i_handler(va_list list)
 {
 	int l;

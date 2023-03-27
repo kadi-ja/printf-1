@@ -18,8 +18,9 @@ int (*get_sp_func(char format))(va_list)
 		{'X', print_uns_HEX},
 		{'S', print_S},
 		{'p', print_p},
-		{"i", print_int_val},
-		{"d", print_dec},
+		{'i', print_int_val},
+		{'d', print_dec},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 

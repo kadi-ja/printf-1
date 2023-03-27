@@ -34,5 +34,6 @@ int print_x(unsigned long int x);
 int print_p(va_list args);
 int print_dec(va_list d_val);
 int print_int_val(va_list inv);
+int print_binary(va_list b);
 
 #endif

@@ -1,10 +1,12 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-#include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <unistd.h>
-#include <stdlib.h>
+#include <stdarg.h>
+#include <stddef.h>
 
 #define BUFFER_SIZE 1024
 /**

@@ -32,6 +32,8 @@ int print_S(va_list args);
 int print_X(unsigned long int x);
 int print_x(unsigned long int x);
 int print_p(va_list args);
-
+int d_handler(va_list list);
+int i_handler(va_list list);
+int b_handler(va_list list);
 
 #endif

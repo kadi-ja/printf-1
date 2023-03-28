@@ -7,9 +7,14 @@
 #include <stdlib.h>
 
 #define BUFFER_SIZE 1024
+#define UPPR_HEX "0123456789ABCDEF"
+#define LWR_HEX "0123456789abcdef"
+#define HEX_BASE 16
+#define OCTAL_BASE 8
+
 /**
-  * struct specifiers - Struct specifiers
-  * @specifier: The conversion specifier
+  * struct sp - Struct specifiers
+  * @_type: type of The conversion specifier
   * @f: The function pointer
   */
 typedef struct sp
@@ -37,6 +42,10 @@ int recursive_print(int n);
 int print_binary(va_list args);
 int print_binary_helper(int n);
 
+/*Helpers*/
+int get_digit_count(unsigned int num, unsigned int base);
+void write_number(unsigned int num, unsigned int base);
+int print_unsigned_hex(va_list args, int uppr);
 
 
 #endif

@@ -12,6 +12,8 @@ int (*get_sp_func(char format))(va_list)
 		print_t sp[] = {
 		{'c', print_chr},
 		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
 		{'u', print_uns_int},
 		{'o', print_octal},
 		{'x', print_uns_hex},

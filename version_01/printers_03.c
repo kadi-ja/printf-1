@@ -9,7 +9,9 @@
 
 int print_uns_hex(va_list args)
 {
-	return (print_unsigned_hex(args, 0));
+	unsigned int n = va_arg(args, unsigned int);
+
+	return (print_unsigned_hex(n, 0));
 }
 
 
@@ -22,5 +24,7 @@ int print_uns_hex(va_list args)
 
 int print_uns_HEX(va_list args)
 {
-	return (print_unsigned_hex(args, 1));
+	unsigned int n = va_arg(args, unsigned int);
+
+	return (print_unsigned_hex(n, 1));
 }

@@ -7,7 +7,7 @@
 **/
 int print_S(va_list args)
 {
-	unsigned int i, count = 0, aux;
+	unsigned int i, count = 0;
 	char *str;
 
 	str = va_arg(args, char*);
@@ -17,16 +17,16 @@ int print_S(va_list args)
 	{
 		if (str[i] < 32 || str[i] >= 127)
 		{
-			aux = str[i];
 			_write('\\');
 			_write('x');
-			count = count + 2;
-			if (aux > 0 && aux < 16)
+			count += 2;
+
+			if (str[i] > 0 && str[i] < HEX_BASE)
 			{
 				_write('0');
 				count++;
 			}
-			count = count + print_X(aux);
+			count += print_unsigned_hex(str[i], 1);
 		}
 		else
 		{

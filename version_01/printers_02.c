@@ -1,4 +1,52 @@
 #include "main.h"
+
+
+/**
+  * print_binary - Prints a int converted to binary
+  * @args: A list of variadic arguments
+  *
+  * Return: The number of printed digits
+  */
+
+int print_binary(va_list args)
+{
+	int n = va_arg(args, int);
+	int count = 0;
+
+	if (n < 0)
+	{
+		_write('1');
+		n = -n;
+		count++;
+	}
+
+	count += print_binary_helper(n);
+	return (count);
+}
+
+/**
+ * print_binary_helper - Prints the binary format of a given number
+ * @n: The number to convert
+ *
+ * Return: The number of printed digits
+ */
+int print_binary_helper(int n)
+{
+	int count;
+
+	if (n <= 1)
+	{
+		_write(n + '0');
+		return (1);
+	}
+
+	count = print_binary_helper(n / 2);
+	_write((n % 2) + '0');
+
+	return (count + 1);
+}
+
+
 /**
  * print_uns_int - prints unsigned integer
  * @args: arguments list containing the integer to print

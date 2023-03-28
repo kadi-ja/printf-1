@@ -34,6 +34,8 @@ int print_x(unsigned long int x);
 int print_p(va_list args);
 int print_int(va_list args);
 int recursive_print(int n);
+int print_binary(va_list args);
+int print_binary_helper(int n);
 
 
 

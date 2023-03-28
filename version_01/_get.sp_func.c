@@ -14,6 +14,7 @@ int (*get_sp_func(char format))(va_list)
 		{'s', print_str},
 		{'d', print_int},
 		{'i', print_int},
+		{'b', print_binary},
 		{'u', print_uns_int},
 		{'o', print_octal},
 		{'x', print_uns_hex},

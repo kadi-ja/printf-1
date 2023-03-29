@@ -10,16 +10,17 @@ int (*get_sp_func(char format))(va_list)
 {
 	int i;
 		print_t sp[] = {
-		{'c', _print_a_char},
-		{'s', _print_a_string},
+		{'c', print_chr},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+		{'b', print_binary},
 		{'u', print_uns_int},
 		{'o', print_octal},
 		{'x', print_uns_hex},
 		{'X', print_uns_HEX},
 		{'S', print_S},
 		{'p', print_p},
-		{'i', print_int_val},
-		{'d', print_dec},
 		{'\0', NULL}
 	};
 
